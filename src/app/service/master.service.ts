@@ -27,5 +27,11 @@ export class MasterService {
 
    }
 
+   //get booked seats
+   getBookedSeats(id: number){
+    return this.http.get<any[]>(this.apiURl + "getBookedSeats?shceduleId="+id);
+
+   }
+
 
 }
