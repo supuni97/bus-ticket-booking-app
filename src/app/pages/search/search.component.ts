@@ -3,19 +3,19 @@ import { MasterService } from '../../service/master.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [AsyncPipe, FormsModule, CommonModule,DatePipe], // Ensure CommonModule is imported
+  imports: [AsyncPipe, FormsModule, CommonModule, DatePipe, RouterLink],
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css'] // Ensure this is styleUrls, not styleUrl
+  styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
   locations$: Observable<any[]> = new Observable<any[]>();
   masterSrv = inject(MasterService);
+  router = inject(Router);
   busList: any[] = [];
 
   searchObj: any = {
@@ -33,17 +33,15 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch() {
-    const { fromLocation, toLocation, travelDate } = this.searchObj; // Correct destructuring for an object
-    //console.log('Search parameters:', fromLocation, toLocation, travelDate); // Debugging log
+    const { fromLocation, toLocation, travelDate } = this.searchObj;
     this.masterSrv.searchBus(fromLocation, toLocation, travelDate).subscribe(
       (res: any) => {
         this.busList = res;
-       // console.log('Search results:', res); // Debugging log
-        //   },
-        //   (error: any) => {
-        //     console.error('Search error:', error); // Debugging log
       }
     );
+  }
 
+  navigateToBooking(scheduleId: string) {
+    this.router.navigate(['/booking', scheduleId]);
   }
 }
