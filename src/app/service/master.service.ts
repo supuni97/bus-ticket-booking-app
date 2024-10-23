@@ -21,5 +21,11 @@ export class MasterService {
     return this.http.get<any[]>(`${this.apiURl}searchBus?fromLocation=${from}&toLocation=${to}&travelDate=${travelDate}`)
    }
 
+   //get bus schedule by id
+   getScheduleById(id: number){
+    return this.http.get<any[]>(this.apiURl + "GetBusScheduleById?id="+id);
+
+   }
+
 
 }
