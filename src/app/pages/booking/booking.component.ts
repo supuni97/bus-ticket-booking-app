@@ -14,6 +14,8 @@ export class BookingComponent {
   scheduleId: number = 0;
   scheduleData: any;
 
+  seatArray:number[]=[];
+
   constructor(private activedRoute: ActivatedRoute, private masterSrv: MasterService) {
     this.activedRoute.params.subscribe((res: any) => {
       this.scheduleId = res.id;
@@ -26,6 +28,10 @@ export class BookingComponent {
     this.masterSrv.getScheduleById(this.scheduleId).subscribe((res: any) => {
       debugger;
       this.scheduleData = res;
+      for (let index = 1; index <= this.scheduleData.totalSeats; index++) {
+        this.seatArray.push(index)
+        
+      }
     })
   }
 

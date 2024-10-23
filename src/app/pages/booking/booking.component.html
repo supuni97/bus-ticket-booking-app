@@ -9,10 +9,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3">
-                        <div class="seat reserved"></div>
-                    </div>
-                   
+                    @for (item of seatArray; track $index) {
+                        <div class="col-3">
+                            <div class="seat reserved">{{item}}</div>
+                        </div>
+                    }
                     
                 </div>
             </div>
