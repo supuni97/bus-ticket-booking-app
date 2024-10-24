@@ -15,6 +15,7 @@ export class AppComponent {
   isLoginForm: boolean = true;
 
   masterSrv = inject(MasterService);
+  loggedUserData : any;
 
   registerObj: any = {
 
@@ -45,7 +46,17 @@ export class AppComponent {
     }
   }
 
-  onRegister(){
-
+  onRegister() {
+   
+    //console.log('Registering user', this.registerObj); 
+    this.masterSrv.onRegisterUser(this.registerObj).subscribe((res: any) => {
+       // console.log('Registration successful', res); 
+        alert("User registered successfully");
+        localStorage.setItem('redBusUser',JSON.stringify(res.data))
+        this.loggedUserData = res.data;
+      }, error=> {
+       // console.error('Registration error', error);
+        alert(JSON.stringify(error))
+      })
   }
 }
