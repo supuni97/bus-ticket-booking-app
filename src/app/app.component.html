@@ -19,9 +19,20 @@
       <li class="nav-item ">
         <a class="nav-link" href="#">Help</a>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link text-danger" (click)="openModal()">Login/Signup</a>
-      </li>
+      @if (loggedUserData) {
+        <li class="nav-item ">
+          <a class="nav-link text-success">{{loggedUserData.userName}}</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-danger">Logout</a>
+        </li>
+      } @else {
+        <li class="nav-item ">
+          <a class="nav-link text-danger" (click)="openModal()">Login/Signup</a>
+        </li>
+      }
+   
+     
     </ul>
   </div>
 </nav>

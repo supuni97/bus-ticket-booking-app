@@ -32,6 +32,14 @@ export class AppComponent {
 
   }
 
+  constructor(){
+    const localUser = localStorage.getItem('redBusUser')
+    if(localUser != null){
+      this.loggedUserData = JSON.parse(localUser);
+    }
+
+  }
+
   openModal() {
     const modal = document.getElementById("myModal");
     if (modal != null) {
@@ -54,9 +62,12 @@ export class AppComponent {
         alert("User registered successfully");
         localStorage.setItem('redBusUser',JSON.stringify(res.data))
         this.loggedUserData = res.data;
+        this.closeModal();
       }, error=> {
        // console.error('Registration error', error);
         alert(JSON.stringify(error))
       })
   }
+
+  //add login also
 }
