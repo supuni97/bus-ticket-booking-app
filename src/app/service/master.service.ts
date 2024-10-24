@@ -33,5 +33,11 @@ export class MasterService {
 
    }
 
+    //user register
+    onRegisterUser(obj:any){
+      return this.http.post<any[]>(this.apiURl + "AddNewUser",obj);
+  
+     }
+
 
 }
