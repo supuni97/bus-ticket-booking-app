@@ -32,7 +32,27 @@
                 </div>
             </div>
             <div class="col-8">
-                
+                @for (item of userSelectedSeatArray; track $index) {
+                    <div class="row">
+                        <div class="col-2">
+                            <label>Passenger Name</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <label>Age</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <label>Gender</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <label>Seat No</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                }
+              
             </div>
         </div> 
       </div> 

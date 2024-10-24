@@ -39,5 +39,9 @@ export class MasterService {
   
      }
 
+     //user login
+     onLoginUser(loginObj: any): Observable<any> {
+      return this.http.post(`${this.apiURl}/login`, loginObj);
+    }
 
 }

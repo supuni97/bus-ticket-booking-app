@@ -32,6 +32,11 @@ export class AppComponent {
 
   }
 
+  loginObj: any = {
+    emailId: "",
+    password: ""
+  };
+
   constructor(){
     const localUser = localStorage.getItem('redBusUser')
     if(localUser != null){
@@ -68,6 +73,23 @@ export class AppComponent {
         alert(JSON.stringify(error))
       })
   }
+  logout(){
+    localStorage.removeItem('redBusUser')
+    this.loggedUserData =undefined;
 
-  //add login also
+  }
+  
+  onLogin() {
+    this.masterSrv.onLoginUser(this.loginObj).subscribe(
+      (res: any) => {
+        alert("User logged in successfully");
+        localStorage.setItem('redBusUser', JSON.stringify(res.data));
+        this.loggedUserData = res.data;
+        this.closeModal();
+      },
+      (error: any) => {
+        alert(JSON.stringify(error));
+      }
+    );
+  }
 }

@@ -24,7 +24,7 @@
           <a class="nav-link text-success">{{loggedUserData.userName}}</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link text-danger">Logout</a>
+          <a class="nav-link text-danger" (click)="logout()">Logout</a>
         </li>
       } @else {
         <li class="nav-item ">
@@ -67,7 +67,7 @@
             <label class="form-label" for="loginPassword">Password</label>
           </div>
 
-          <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button>
+          <button type="button" (click)="onLogin()" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button>
 
           <div class="text-center">
             <p>Not a member? <a (click)="isLoginForm = false">Register</a></p>
