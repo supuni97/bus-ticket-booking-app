@@ -34,26 +34,34 @@
             <div class="col-8">
                 @for (item of userSelectedSeatArray; track $index) {
                     <div class="row">
-                        <div class="col-2">
-                            <label>Passenger Name</label>
-                            <input type="text" class="form-control">
+                        <div class="col-3">
+                            <label>Passenger</label>
+                            <input type="text" [(ngModel)]="item.passengerName" class="form-control">
                         </div>
                         <div class="col-2">
                             <label>Age</label>
-                            <input type="text" class="form-control">
+                            <input type="text"  [(ngModel)]="item.age" class="form-control">
                         </div>
                         <div class="col-2">
                             <label>Gender</label>
-                            <input type="text" class="form-control">
+                           <select [(ngModel)]="item.gender" class="form-control">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                           </select>
                         </div>
                         <div class="col-2">
                             <label>Seat No</label>
-                            <input type="text" class="form-control">
+                            <input type="text"  [(ngModel)]="item.seatNo" disabled class="form-control">
                         </div>
                     </div>
                 }
               
             </div>
         </div> 
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="btn btn-success" (click)="bookNow()">Book Now</button>
+            </div>
+        </div>
       </div> 
 </section>
